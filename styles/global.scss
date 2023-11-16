@@ -1,0 +1,11 @@
+@import './utils.scss';
+
+// @tailwind base;
+// @tailwind components;
+// @tailwind utilities;
+
+body {
+  color: #fff;
+  background: rgb(20, 30, 48);
+  font-family: $primaryFont;
+}

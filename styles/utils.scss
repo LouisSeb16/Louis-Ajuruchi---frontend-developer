@@ -1,0 +1,111 @@
+@font-face {
+    font-family: Quicksand;
+    src: url(../public/fonts/quicksand/static/Quicksand-Regular.ttf);
+}
+
+@font-face {
+    font-family: Quicksand Bold;
+    src: url(../public/fonts/quicksand/static/Quicksand-Bold.ttf);
+}
+
+$primaryFont:  Quicksand;
+$headingFont:  Quicksand Bold;
+
+
+@mixin responsivePro($breakpoint) {
+    @if ($breakpoint ==mobile) {
+        @media (max-width: 768px) {
+            @content
+        }
+
+        ;
+    }
+
+    @else if($breakpoint ==portrait) {
+        @media (orientation: portrait) and (max-width: 774px) {
+            @content
+        }
+
+        ;
+    }
+
+    @else if($breakpoint ==portrait-large) {
+        @media (orientation: landscape) and (max-width: 1270px) {
+            @content
+        }
+
+        ;
+    }
+
+    @else if($breakpoint ==landscape) {
+        @media (orientation: landscape) and (max-width: 774px) {
+            @content
+        }
+
+        ;
+    }
+
+    @else if ($breakpoint ==small) {
+        @media (max-width: 300px) {
+            @content
+        }
+
+        ;
+    }
+
+    @else if ($breakpoint ==ipad) {
+        @media (min-width: 992px) and (max-width: 1025px) {
+            @content
+        }
+
+        ;
+    }
+
+    @else if($breakpoint ==above) {
+        @media(orientation: portrait) and (min-width: 1025px) {
+            @content
+        }
+
+        ;
+    }
+
+    @else if($breakpoint ==above2) {
+        @media(min-width: 1026px) and (max-width: 1251px) {
+            @content
+        }
+
+        ;
+    }
+
+    @else if($breakpoint == large-above) {
+        @media(min-width: 1280px) and (max-width: 1320px) {
+            @content
+        }
+
+        ;
+    }
+
+    @else if($breakpoint ==exception) {
+        @media (min-width: 768px) and (max-width: 992px) {
+            @content
+        }
+
+        ;
+    }
+
+    @else if($breakpoint ==MD) {
+        @media (min-width: 1200px) {
+            @content
+        }
+
+        ;
+    }
+
+    @else if($breakpoint ==LG) {
+        @media (min-width: 1400px) {
+            @content
+        }
+
+        ;
+    }
+}

@@ -1,0 +1,141 @@
+@import "../utils.scss";
+
+.explore {
+  padding: 100px 20px;
+  position: relative;
+  min-height: 100vh;
+  background: linear-gradient(
+      rgb(20, 30, 48),
+      rgba(20, 30, 48, 0.3),
+      rgba(20, 30, 48, 0.6),
+      rgb(20, 30, 48)
+    ),
+    url(../../public/images/home/shuttle3.png);
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  #con {
+    position: relative;
+    z-index: 1;
+  }
+
+  .search {
+    h1 {
+      font-size: 40px;
+      font-family: $headingFont;
+      font-weight: 900;
+      margin-bottom: 50px;
+    }
+
+    .form {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      @include responsivePro(mobile) {
+        justify-content: space-between;
+        flex-direction: column;
+      }
+
+      input {
+        width: 50%;
+        padding: 15px 20px;
+        color: #fff;
+        background: #243350;
+        border: 1px solid transparent;
+        outline: none;
+
+        @include responsivePro(mobile) {
+          width: 100%;
+          margin: 10px auto;
+        }
+      }
+
+      div {
+        width: 40%;
+        padding: 15px 20px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background: rgb(36, 51, 80);
+
+        @include responsivePro(mobile) {
+          width: 100%;
+          margin: 10px auto;
+        }
+
+        select {
+          background: transparent;
+          color: #fff;
+          outline: none;
+          border: 1px solid transparent;
+        }
+      }
+    }
+  }
+
+  .products {
+    padding: 40px 0px;
+    margin-top: 40px;
+
+    .rocketCard {
+      border: 1px solid #243350;
+      background: rgb(20, 30, 48);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px;
+      height: 150px;
+
+      @include responsivePro(mobile) {
+        margin: 10px auto;
+      }
+
+      #imgDiv {
+        height: 80px;
+        width: 80px;
+        border-radius: 50%;
+        border: 1px solid #243350;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 20px;
+        background: #243350;
+      }
+
+      #details {
+        width: 70%;
+
+        h2 {
+          font-size: 18px;
+          font-weight: 900;
+        }
+
+        p {
+          margin: 0px;
+          font-size: 16px;
+        }
+
+        div {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          //   margin-top: 20px;
+
+          p {
+            margin: 0px;
+            font-size: 14px;
+          }
+
+          span {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 14px;
+          }
+        }
+      }
+    }
+  }
+}

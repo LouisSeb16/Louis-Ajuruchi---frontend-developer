@@ -1,0 +1,4 @@
+export const seoData = {
+    title: 'Rockets and Capsules',
+    description: `Explore the cosmos with our stunning collection of rockets and capsules! Immerse yourself in the extraordinary world of space exploration as we showcase an array of meticulously crafted spacecraft. From iconic rocket launches to intricate space capsules, our website offers a visual feast for enthusiasts and curious minds alike. Discover the engineering marvels that propel humanity into the great unknown. Embark on a celestial journey with our immersive gallery of rockets and capsules – where the wonders of space come to life!`
+}
