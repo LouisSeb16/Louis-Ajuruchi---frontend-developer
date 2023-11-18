@@ -3,11 +3,11 @@ import style from "@/styles/explore/index.module.scss";
 import SearchField from "./SearchField";
 import Products from "./Products";
 
-const ExploreComponent = () => {
+const ExploreComponent = (props: any) => {
   return (
     <div className={`container-fluid ${style.explore}`}>
       <SearchField />
-      <Products />
+      <Products {...props} />
     </div>
   );
 };

@@ -1,65 +1,58 @@
-import React from "react";
+import React, { useState } from "react";
 import style from "@/styles/explore/index.module.scss";
 import * as MdIcons from "react-icons/md";
 import * as BsIcons from "react-icons/bs";
+import Modal from "./Modal";
 
-const Products = () => {
+const Products = (props: any) => {
+  const {
+    store: { rockets, loading, openViewRocketModal },
+    action: { setOpenViewRocketModal },
+  } = props;
+
+  const [rocketId, setRocketId] = useState<any>("");
+  const handleModal = (id: any) => {
+    setRocketId(id);
+    setOpenViewRocketModal(true);
+  };
+
   return (
-    <div className={`container ${style.products}`}>
-      <div className="row">
-        <div className="col-md-4">
-          <div className={style.rocketCard}>
-            <div id={style.imgDiv}>
-              <BsIcons.BsFillRocketTakeoffFill />
-            </div>
-            <div id={style.details}>
-              <h2>Rocket Name</h2>
-              <p>Country</p>
-              <div>
-                <p>Active</p>
-                <span>
-                  <MdIcons.MdOutlineStar id={style.icon} /> 40
-                </span>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div className="col-md-4">
-          <div className={style.rocketCard}>
-            <div id={style.imgDiv}>
-              <BsIcons.BsFillRocketTakeoffFill />
-            </div>
-            <div id={style.details}>
-              <h2>Rocket Name</h2>
-              <p>Country</p>
-              <div>
-                <p>Active</p>
-                <span>
-                  <MdIcons.MdOutlineStar id={style.icon} /> 40
-                </span>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div className="col-md-4">
-          <div className={style.rocketCard}>
-            <div id={style.imgDiv}>
-              <BsIcons.BsFillRocketTakeoffFill />
-            </div>
-            <div id={style.details}>
-              <h2>Rocket Name</h2>
-              <p>Country</p>
-              <div>
-                <p>Active</p>
-                <span>
-                  <MdIcons.MdOutlineStar id={style.icon} /> 40
-                </span>
-              </div>
-            </div>
-          </div>
+    <>
+      <div className={`container ${style.products}`}>
+        <div className="row">
+          {rockets.length &&
+            rockets.map((data: any, index: any) => {
+              let mainData = rocketId === data.rocket_id && data;
+              return (
+                <>
+                  {openViewRocketModal && mainData && (
+                    <Modal props={props} mainData={mainData} />
+                  )}
+                  <div className="col-md-4" key={index}>
+                    <div
+                      className={style.rocketCard}
+                      onClick={() => handleModal(data.rocket_id)}
+                    >
+                      <img src={`${data.flickr_images[0]}`} alt="" />
+                      <div id={style.details}>
+                        <h2>{data.rocket_name}</h2>
+                        <p>{data.country}</p>
+                        <div>
+                          <p>{data.active ? "Active" : "Inactive"}</p>
+                          <span>
+                            <MdIcons.MdOutlineStar id={style.icon} />{" "}
+                            {data.success_rate_pct}
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </>
+              );
+            })}
         </div>
       </div>
-    </div>
+    </>
   );
 };
 
