@@ -69,11 +69,15 @@
           color: #fff;
           outline: none;
           border: 1px solid transparent;
+
+          option {
+            background: rgb(36, 51, 80);
+          }
         }
       }
     }
 
-    p{
+    p {
       margin-top: 20px;
     }
   }

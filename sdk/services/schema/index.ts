@@ -53,6 +53,8 @@ export const rocketSchema = () => {
                 return rocketData;
             }else if (rocketData.country.toLowerCase().includes(currentValue.toLowerCase())) {
                 return rocketData;
+            }else if (rocketData.rocket_type.toLowerCase().includes(currentValue.toLowerCase())) {
+                return rocketData;
             }
         }
     });
