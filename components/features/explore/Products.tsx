@@ -1,12 +1,11 @@
 import React, { useState } from "react";
 import style from "@/styles/explore/index.module.scss";
 import * as MdIcons from "react-icons/md";
-import * as BsIcons from "react-icons/bs";
 import Modal from "./Modal";
 
 const Products = (props: any) => {
   const {
-    store: { rockets, loading, openViewRocketModal },
+    store: { openViewRocketModal, filteredRockets },
     action: { setOpenViewRocketModal },
   } = props;
 
@@ -20,8 +19,8 @@ const Products = (props: any) => {
     <>
       <div className={`container ${style.products}`}>
         <div className="row">
-          {rockets.length &&
-            rockets.map((data: any, index: any) => {
+          {filteredRockets.length > 0 &&
+            filteredRockets.map((data: any, index: any) => {
               let mainData = rocketId === data.rocket_id && data;
               return (
                 <>

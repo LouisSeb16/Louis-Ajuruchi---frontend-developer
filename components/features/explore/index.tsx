@@ -6,7 +6,7 @@ import Products from "./Products";
 const ExploreComponent = (props: any) => {
   return (
     <div className={`container-fluid ${style.explore}`}>
-      <SearchField />
+      <SearchField {...props}/>
       <Products {...props} />
     </div>
   );
