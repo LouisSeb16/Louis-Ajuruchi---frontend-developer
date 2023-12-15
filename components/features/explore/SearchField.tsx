@@ -24,7 +24,7 @@ const SearchField = (props: any) => {
               onChange={(e) => setRocketSearch(e.target.value)}
             >
               <option value="">Type</option>
-              {categories.type?.map((data: any, index: any) => (
+              {categories && categories.type?.map((data: any, index: any) => (
                 <option value={data} key={index}>
                   {data}
                 </option>
@@ -36,7 +36,7 @@ const SearchField = (props: any) => {
               onChange={(e) => setRocketSearch(e.target.value)}
             >
               <option value="">Country</option>
-              {categories.country?.map((data: any, index: any) => (
+              {categories && categories.country?.map((data: any, index: any) => (
                 <option value={data} key={index}>
                   {data}
                 </option>
