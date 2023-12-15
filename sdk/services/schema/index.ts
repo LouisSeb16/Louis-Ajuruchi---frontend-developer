@@ -34,8 +34,8 @@ export const rocketSchema = () => {
     }
 
     const categories = {
-        type: filterArray(dataFromApi.type),
-        country: filterArray(dataFromApi.country),
+        type: rockets.length > 0 && filterArray(dataFromApi.type),
+        country: rockets.length > 0 && filterArray(dataFromApi.country),
     };
 
     const filteredRockets = rockets.length > 0 && rockets?.filter((rocketData: any) => {
