@@ -1,11 +1,14 @@
 import React from "react";
 import style from "@/styles/explore/index.module.scss";
+import { useSearchParams } from "next/navigation";
 
 const SearchField = (props: any) => {
   const {
     store: { searchRockets, filteredRockets, categories, rockets },
-    action: { setRocketSearch },
+    action: { setRocketSearch, handleSearch },
   } = props;
+
+  const searchParams = useSearchParams();
 
   return (
     <div className={`container-fluid ${style.search}`}>
@@ -16,8 +19,9 @@ const SearchField = (props: any) => {
             <input
               type="text"
               placeholder="Search rocket"
-              value={searchRockets}
-              onChange={(e) => setRocketSearch(e.target.value)}
+              // value={searchRockets}
+              defaultValue={searchParams.get("query")?.toString()}
+              onChange={(e) => handleSearch(e.target.value)}
             />
             <div>
               <select
