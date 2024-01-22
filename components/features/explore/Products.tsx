@@ -2,6 +2,9 @@ import React, { useState } from "react";
 import style from "@/styles/explore/index.module.scss";
 import * as MdIcons from "react-icons/md";
 import Modal from "./Modal";
+import { useSearchParams } from "next/navigation";
+import { generateTotalPages, streamlineItemsToDisplay } from "@/sdk/utils";
+import AppPagination from "@/components/shared/pagination";
 
 const Products = (props: any) => {
   const {
@@ -15,12 +18,17 @@ const Products = (props: any) => {
     setOpenViewRocketModal(true);
   };
 
+  const searchParams = useSearchParams();
+  const currentPage = Number(searchParams.get("page")) || 1;
+  const totalPages = generateTotalPages(filteredRockets);
+  const paginatedData = streamlineItemsToDisplay(currentPage, filteredRockets);
+
   return (
     <>
       <div className={`container ${style.products}`}>
         <div className="row">
           {filteredRockets.length > 0 &&
-            filteredRockets.map((data: any, index: any) => {
+            paginatedData.map((data: any, index: any) => {
               let mainData = rocketId === data.rocket_id && data;
               return (
                 <>
@@ -50,6 +58,10 @@ const Products = (props: any) => {
               );
             })}
         </div>
+
+        {filteredRockets && filteredRockets?.length > 0 && (
+          <AppPagination totalPages={totalPages} />
+        )}
       </div>
     </>
   );

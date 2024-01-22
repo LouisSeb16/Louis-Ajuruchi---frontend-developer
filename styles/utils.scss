@@ -11,6 +11,9 @@
 $primaryFont:  Quicksand;
 $headingFont:  Quicksand Bold;
 
+$primary-color: #5738aa;
+$secondary-color: #FC8F53;
+
 
 @mixin responsivePro($breakpoint) {
     @if ($breakpoint ==mobile) {
