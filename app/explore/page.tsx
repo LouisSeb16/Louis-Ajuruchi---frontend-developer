@@ -1,6 +1,7 @@
 "use client";
 import dynamic from "next/dynamic";
-import React from "react";
+import React, { Suspense } from "react";
+import Loading from "./loading";
 
 const DynamicPage = dynamic(
   async () => await import("@/components/features/explore"),
@@ -10,7 +11,9 @@ const DynamicPage = dynamic(
 const Explore = () => {
   return (
     <>
-      <DynamicPage />
+      <Suspense fallback={<Loading />}>
+        <DynamicPage />
+      </Suspense>
     </>
   );
 };

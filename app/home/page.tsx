@@ -1,13 +1,12 @@
 import React, { Suspense } from "react";
 import Loading from "./loading";
 import HomePageComponents from "@/components/features/home";
-import AppSeo from "@/components/shared/seo";
+import type { Metadata } from "next";
 
 const LandingPage = () => {
   return (
     <Suspense fallback={<Loading />}>
-      <AppSeo />
-      <HomePageComponents/>
+      <HomePageComponents />
     </Suspense>
   );
 };
