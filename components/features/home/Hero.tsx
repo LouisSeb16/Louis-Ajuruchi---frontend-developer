@@ -1,9 +1,11 @@
 import React from "react";
 import style from "@/styles/home/index.module.scss";
 import { useRouter } from 'next/navigation';
+import { homePage_data } from "./data";
 
 const Hero = () => {
   const { push } = useRouter();
+  const { hero } = homePage_data;
 
   return (
     <div className={`container-fluid ${style.hero}`}>
@@ -11,18 +13,8 @@ const Hero = () => {
       <div className="container">
         <div className="row">
           <div className="col-md-8" id={style.col}>
-            <h1>
-              {`Experience the Future: Explore Our Lineup of Space Rockets and
-              Capsules`}
-            </h1>
-            <p>
-              {`Explore the cosmos with our stunning collection of rockets and
-              capsules! Immerse yourself in the extraordinary world of space
-              exploration as we showcase an array of meticulously crafted
-              spacecraft. From iconic rocket launches to intricate space
-              capsules, our website offers a visual feast for enthusiasts and
-              curious minds alike.`}
-            </p>
+            {hero.title}
+            {hero.description}
             <button onClick={() => push("/explore")}>SEARCH CAPSULE</button>
           </div>
           <div className="col-md-4"></div>
