@@ -1,6 +1,6 @@
 'use client';
 
-import { filterArray } from "@/sdk/utils";
+import { filterArray, processDataStatus } from "@/sdk/utils";
 import { fetchAllRockets } from "../providers";
 import { useRocketStore } from "../store"
 import { useRouter, usePathname, useSearchParams } from "next/navigation";
@@ -30,6 +30,23 @@ export const rocketSchema = () => {
     const { replace } = useRouter();
     const searchParams = useSearchParams();
     const pathname = usePathname();
+
+    const handleSearch = useDebouncedCallback((value: any) => {
+        const params = new URLSearchParams(searchParams);
+        setRocketSearch(value);
+        params.set('page', '1');
+        value ? params.set('query', value) : params.delete('query');
+        replace(`${pathname}?${params.toString()}`);
+    }, 300);
+
+    const handleFetchAllRockets = async () => {
+        const { data, status, message } = await fetchAllRockets();
+        processDataStatus({
+            data: data, status: status, error: message,
+            setData: (data: any) => setRockets(data),
+            clearData: () => setRockets([])
+        });
+    };
 
     const filter = {
         type: "type",
@@ -66,19 +83,6 @@ export const rocketSchema = () => {
             }
         }
     });
-
-    const handleSearch = useDebouncedCallback((value: any) => {
-        const params = new URLSearchParams(searchParams);
-        setRocketSearch(value);
-        params.set('page', '1');
-        value ? params.set('query', value) : params.delete('query');
-        replace(`${pathname}?${params.toString()}`);
-    }, 300);
-
-    const handleFetchAllRockets = async () => {
-        const { data, status } = await fetchAllRockets();
-        if (data && status === 200) setRockets(data);
-    };
 
     return {
         store: {
