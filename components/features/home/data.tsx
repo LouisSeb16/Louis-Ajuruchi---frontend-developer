@@ -1,10 +1,6 @@
 export const homePage_data = {
   hero: {
-    title: (
-      <h1>
-        {`Experience the Future: Explore Our Lineup of Space Rockets and Capsules`}
-      </h1>
-    ),
+    title: `Experience the Future: Explore Our Lineup of Space Rockets and Capsules`,
     description: (
       <p>
         {`Explore the cosmos with our stunning collection of rockets and capsules!

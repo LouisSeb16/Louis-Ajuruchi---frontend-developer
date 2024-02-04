@@ -3,8 +3,8 @@ import style from "@/styles/explore/index.module.scss";
 import * as MdIcons from "react-icons/md";
 import Modal from "./Modal";
 import { useSearchParams } from "next/navigation";
-import { generateTotalPages, streamlineItemsToDisplay } from "@/sdk/utils";
 import AppPagination from "@/components/shared/pagination";
+import { generateTotalPages, streamlineItemsToDisplay } from "@/components/shared/pagination/utils";
 
 const Products = (props: any) => {
   const {

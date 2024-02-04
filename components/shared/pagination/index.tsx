@@ -3,8 +3,8 @@ import clsx from "clsx";
 import Link from "next/link";
 import * as MdIcons from "react-icons/md";
 import { usePathname, useSearchParams } from 'next/navigation';
-import { generatePagination } from '@/sdk/utils';
-import style from "@/styles/pagination/index.module.scss";
+import style from "./style.module.scss";
+import { generatePagination } from './utils';
 
 const AppPagination = ({ totalPages }: { totalPages: number }) => {
     const pathname = usePathname();
