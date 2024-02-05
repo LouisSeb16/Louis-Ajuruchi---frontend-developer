@@ -41,6 +41,7 @@ export const rocketSchema = () => {
 
     const handleFetchAllRockets = async () => {
         const { data, status, message } = await fetchAllRockets();
+
         processDataStatus({
             data: data, status: status, error: message,
             setData: (data: any) => setRockets(data),

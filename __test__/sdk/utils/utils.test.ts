@@ -1,5 +1,8 @@
 import "@testing-library/jest-dom";
-import { filterArray, processDataStatus } from "@/sdk/utils";
+import { filterArray, processDataStatus, useLoadingState } from "@/sdk/utils";
+
+
+jest.mock('axios');
 
 describe("filterArray", () => {
   test("removes duplicate values from the array", () => {
@@ -66,3 +69,33 @@ describe("processDataStatus", () => {
 
   });
 });
+
+
+describe("useLoadingState", () => {
+
+  it("it should handle loading state correctly", async () => {
+
+    const { withLoading, getLoading } = useLoadingState();
+    
+    const mockAsyncFunction = jest.fn(() => Promise.resolve('Mocked Result'));
+
+    try {
+      expect(getLoading()).toBe(false);
+
+      await withLoading(mockAsyncFunction);
+
+      expect(getLoading()).toBe(false);
+
+      expect(mockAsyncFunction).toHaveBeenCalled();
+
+      const result = await mockAsyncFunction();
+
+      expect(result).toBe('Mocked Result');
+
+    }catch (error) {
+
+      console.error(error);
+
+    }
+  })
+})

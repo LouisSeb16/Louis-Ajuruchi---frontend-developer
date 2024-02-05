@@ -3,6 +3,7 @@ import axios from "axios";
 export async function fetchAllRockets() {
 
     try {
+
         const response = await axios.get('https://api.spacexdata.com/v3/rockets');
 
         const { data } = response;
@@ -10,7 +11,7 @@ export async function fetchAllRockets() {
         const responseData = {
             message: 'Request successful',
             data: data,
-            status: 200
+            status: 200,
         }
 
         return responseData;

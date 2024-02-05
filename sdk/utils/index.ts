@@ -1,3 +1,5 @@
+import { useRocketStore } from "../services/store";
+
 export const filterArray = (array: any[]) => {
   if (!array || array.length === 0 || array == undefined) return [];
   return array?.filter((value: any, index: any, self: string | any[]) => {
@@ -26,3 +28,33 @@ export const processDataStatus = ({
     console.error('Error:', error);
   }
 };
+
+export const useLoadingState = () => {
+
+  let loading = false;
+
+  const withLoading = async (callback: any, ...args: any) => {
+
+    try {
+      
+      loading = true;
+
+      const result = await callback(...args);
+
+      loading = false;
+
+      return result;
+
+    } catch (error) {
+
+      loading = false;
+
+      throw error;
+    };
+  };
+
+  const getLoading = () => loading;
+
+  return { withLoading, getLoading };
+
+}
