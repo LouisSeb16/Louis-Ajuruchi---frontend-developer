@@ -1,12 +1,13 @@
 import React from "react";
 import style from "@/styles/explore/index.module.scss";
 import { useSearchParams } from "next/navigation";
+import { useRocketHooks } from "@/sdk/hooks";
 
-const SearchField = (props: any) => {
+const SearchField = () => {
   const {
     store: { searchRockets, filteredRockets, categories, rockets },
     action: { setRocketSearch, handleSearch },
-  } = props;
+  } = useRocketHooks();
 
   const searchParams = useSearchParams();
 
@@ -14,7 +15,6 @@ const SearchField = (props: any) => {
     <div className={`container-fluid ${style.search}`}>
       <div className="container" id={style.con}>
         <h1>Rockets</h1>
-        {rockets.length > 0 && (
           <div className={style.form}>
             <input
               type="text"
@@ -52,7 +52,6 @@ const SearchField = (props: any) => {
               </select>
             </div>
           </div>
-        )}
         {searchRockets.length > 0 && (
           <p>
             {filteredRockets.length} matching result(s) for {searchRockets}

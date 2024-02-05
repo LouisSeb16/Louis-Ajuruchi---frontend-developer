@@ -4,13 +4,17 @@ import * as MdIcons from "react-icons/md";
 import Modal from "./Modal";
 import { useSearchParams } from "next/navigation";
 import AppPagination from "@/components/shared/pagination";
-import { generateTotalPages, streamlineItemsToDisplay } from "@/components/shared/pagination/utils";
+import {
+  generateTotalPages,
+  streamlineItemsToDisplay,
+} from "@/components/shared/pagination/utils";
+import { useRocketHooks } from "@/sdk/hooks";
 
-const Products = (props: any) => {
+const Products = () => {
   const {
     store: { openViewRocketModal, filteredRockets },
     action: { setOpenViewRocketModal },
-  } = props;
+  } = useRocketHooks();
 
   const [rocketId, setRocketId] = useState<any>("");
   const handleModal = (id: any) => {
@@ -33,7 +37,10 @@ const Products = (props: any) => {
               return (
                 <>
                   {openViewRocketModal && mainData && (
-                    <Modal props={props} mainData={mainData} />
+                    <Modal
+                      setOpenViewRocketModal={setOpenViewRocketModal}
+                      mainData={mainData}
+                    />
                   )}
                   <div className="col-md-4" key={index}>
                     <div
