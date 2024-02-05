@@ -15,7 +15,7 @@ const Capsules = () => {
           </div>
           <div className="col-md-6">
             <img src="/images/home/shuttle2.jpg" alt="" />
-            {capsules.description}
+            <p>{capsules.description}</p>
           </div>
         </div>
       </div>

@@ -14,7 +14,7 @@ const Hero = () => {
         <div className="row">
           <div className="col-md-8" id={style.col}>
             <h1>{hero.title}</h1>
-            {hero.description}
+            <p>{hero.description}</p>
             <button onClick={() => push("/explore")}>SEARCH CAPSULE</button>
           </div>
           <div className="col-md-4"></div>
